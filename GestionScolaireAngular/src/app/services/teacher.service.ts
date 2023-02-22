@@ -8,24 +8,24 @@ import {Teacher} from "../model/teacher.model";
 })
 export class TeacherService {
 
-  url = 'http://localhost:8086/learn/api/classrooms';
+  url = 'http://localhost:8083/gestionscolaire';
 
   constructor(private http: HttpClient) {
   }
 
-  public getAll(): Observable<Teacher[]> {
-    return this.http.get<Teacher[]>(this.url);
+  public getAll(idInst: number): Observable<Teacher[]> {
+    return this.http.get<Teacher[]>(`${this.url}/institution/${idInst}/teacher`);
   }
 
   getOne(id: number): Observable<Teacher> {
-    return this.http.get<Teacher>(`${this.url}/${id}`);
+    return this.http.get<Teacher>(`${this.url}/teacher/${id}`);
   }
 
   add(teacher: Teacher): Observable<Teacher> {
-    return this.http.post<Teacher>(`${this.url}`, teacher);
+    return this.http.post<Teacher>(`${this.url}/teacher`, teacher);
   }
 
   delete(id: number): Observable<void> {
-    return this.http.delete<any>(`${this.url}/${id}`);
+    return this.http.delete<any>(`${this.url}/teacher/${id}`);
   }
 }
