@@ -17,14 +17,14 @@ export class InstitutionService {
   }
 
   getOne(id: number): Observable<Institution> {
-    return this.http.get<Institution>(`${this.url}/${id}`);
+    return this.http.get<Institution>(`${this.url}/institution/${id}`);
   }
 
   add(institution: Institution): Observable<Institution> {
-    return this.http.post<Institution>(`${this.url}`, institution);
+    return this.http.post<Institution>(`${this.url}/institution`, institution);
   }
 
   delete(id: number): Observable<void> {
-    return this.http.delete<any>(`${this.url}/${id}`);
+    return this.http.delete<any>(`${this.url}/institution/${id}`);
   }
 }

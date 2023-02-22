@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Institution} from "../../../model/institution.model";
 
 @Component({
   selector: 'app-institution',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./institution.component.css']
 })
 export class InstitutionComponent {
+
+  @Input()
+  institution!: Institution
+
 
 }

@@ -1,1 +1,8 @@
-<p>institution-detail works!</p>
+<h1>Détail de l'établissement (ID = {{institution.id}}) : <br> </h1>
+<div>
+  <h2>Catégorie : {{institution.type}}</h2>
+  <h2>Nom : {{institution.name}}</h2>
+  <h2>Téléphone : {{institution.phone}}</h2>
+
+  <button (click)=deleteInstitution()>Delete</button>
+</div>
