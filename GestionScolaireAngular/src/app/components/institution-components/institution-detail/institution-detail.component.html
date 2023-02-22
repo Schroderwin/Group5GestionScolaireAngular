@@ -3,6 +3,9 @@
   <h2>Catégorie : {{institution.type}}</h2>
   <h2>Nom : {{institution.name}}</h2>
   <h2>Téléphone : {{institution.phone}}</h2>
+  <h2>Liste des professeurs : </h2>
+  <app-teacher *ngFor="let n of teachers" [teacher]=n></app-teacher>
+  <app-subject *ngFor="let n of subjects" [subject]=n></app-subject>
 
   <button (click)=deleteInstitution()>Delete</button>
 </div>

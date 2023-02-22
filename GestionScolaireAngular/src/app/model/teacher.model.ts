@@ -5,6 +5,5 @@ export interface Teacher {
   firstName: string,
   lastName: string,
   birthDate: Date,
-  subject: Subject[],
-  capacity: number
+  subjects: Subject[]
 }

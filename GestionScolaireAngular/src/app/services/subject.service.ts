@@ -8,24 +8,24 @@ import {Subject} from "../model/subject.model";
 })
 export class SubjectService {
 
-  url = 'http://localhost:8083/gestionscolaire/institution/1/subject';
+  url = 'http://localhost:8083/gestionscolaire';
 
   constructor(private http: HttpClient) {
   }
 
-  public getAll(): Observable<Subject[]> {
-    return this.http.get<Subject[]>(this.url);
+  public getAll(idInst: number): Observable<Subject[]> {
+    return this.http.get<Subject[]>(`${this.url}/institution/${idInst}/subject`);
   }
 
   getOne(id: number): Observable<Subject> {
-    return this.http.get<Subject>(`${this.url}/${id}`);
+    return this.http.get<Subject>(`${this.url}/subject/${id}`);
   }
 
   add(subject: Subject): Observable<Subject> {
-    return this.http.post<Subject>(`${this.url}`, subject);
+    return this.http.post<Subject>(`${this.url}/subject`, subject);
   }
 
   delete(id: number): Observable<void> {
-    return this.http.delete<any>(`${this.url}/${id}`);
+    return this.http.delete<any>(`${this.url}/subject/${id}`);
   }
 }
