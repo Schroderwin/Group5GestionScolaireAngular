@@ -1,18 +1,17 @@
-<h1>Liste des professeur</h1>
-
+<h1>Gestion des professeurs :</h1>
+<br><br>
 <div class="container-fluid">
-
-  <p ><app-teacher  *ngFor="let teacher of teachers" [teacher]="teacher"> </app-teacher></p>
-  <div class="float-xxl-end"><button class="btn btn-outline-primary" (click)="open(content)">Ajouter un professeur</button></div>
-
+  <app-teacher  *ngFor="let teacher of teachers" [teacher]="teacher"> </app-teacher>
 </div>
+<br><br>
+<button class="btn btn-outline-primary" (click)="open(content)">Ajouter un professeur</button>
 
 
 
 
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Ajouter un professeur!</h4>
+    <h4 class="modal-title" id="modal-basic-title">Ajouter un professeur</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
   </div>
   <div class="container-fluid">

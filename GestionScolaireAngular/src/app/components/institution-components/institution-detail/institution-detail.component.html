@@ -1,20 +1,32 @@
-<h1>Détail de l'établissement (ID = {{institution.id}}) : <br> </h1>
+<div class="w3-container w3-padding-32" id="institution">
+  <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16">
+    Détail de l'établissement (ID = {{institution.id}}) :
+  </h2>
+</div>
 <div>
-  <h2>Catégorie : {{institution.type}}</h2>
-  <h2>Nom : {{institution.name}}</h2>
-  <h2>Téléphone : {{institution.phone}}</h2>
-  <span [routerLink]="['/institution/' , institution.id,'teacher']">
-    <button>Gestion des professeurs</button>
-  </span>
-  <span [routerLink]="['/institution/' , institution.id,'subject']">
-    <button>Gestion des matières</button>
-  </span>
-  <span [routerLink]="['/institution/' , institution.id,'group-class']">
-    <button>Gestion des classes</button>
-  </span>
-  <span [routerLink]="['/institution/' , institution.id,'classroom']">
-    <button>Gestion des salles de classe</button>
-  </span>
+  <h3>Catégorie : {{institution.type}}</h3>
+  <h3>Nom : {{institution.name}}</h3>
+  <h3>Téléphone : {{institution.phone}}</h3>
+  <h3>Nombre de professeurs : {{teachers.length}}</h3>
+  <h3>Nombre de matières enseignées : {{subjects.length}}</h3>
+  <h3>Nombre de classes : {{groupClasses.length}}</h3>
+  <h3>Nombre de salles de classe : {{classrooms.length}}</h3>
+  <br>
+  <button  class="btn btn-primary" [routerLink]="['/institution/' , institution.id,'teacher']">
+    Gestion des professeurs
+  </button>
+  <br>
+  <button  class="btn btn-primary" [routerLink]="['/institution/' , institution.id,'subject']">
+    Gestion des matières
+  </button>
+  <br>
+  <button  class="btn btn-primary" [routerLink]="['/institution/' , institution.id,'group-class']">
+    Gestion des classes
+  </button>
+  <br>
+  <button  class="btn btn-primary" [routerLink]="['/institution/' , institution.id,'classroom']">
+    Gestion des salles de classe
+  </button>
   <br><br><br>
-  <button (click)=deleteInstitution()>Delete</button>
+  <button style="background-color: red"  class="btn btn-primary" (click)=deleteInstitution()>Delete</button>
 </div>
