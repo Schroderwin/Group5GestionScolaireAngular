@@ -30,13 +30,13 @@ const routes : Routes = [
   {path: 'institution', component: InstitutionListComponent},
   {path: 'institution/:id', component: InstitutionDetailComponent},
   {path: 'institution/:id/classroom', component: ClassroomListComponent},
-  {path: 'institution/:id/classroom/:id', component: ClassroomDetailComponent},
+  {path: 'classroom/:id', component: ClassroomDetailComponent},
   {path: 'institution/:id/group-class', component: GroupclassListComponent},
-  {path: 'institution/:id/group-class/:id', component: GroupclassDetailComponent},
+  {path: 'group-class/:id', component: GroupclassDetailComponent},
   {path: 'institution/:id/subject', component: SubjectListComponent},
-  {path: 'institution/:id/subject/:id', component: SubjectDetailComponent},
+  {path: 'subject/:id', component: SubjectDetailComponent},
   {path: 'institution/:id/teacher', component: TeacherListComponent},
-  {path: 'institution/:id/teacher/:id', component: TeacherDetailComponent},
+  {path: 'teacher/:id', component: TeacherDetailComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'}
 ]
 @NgModule({
