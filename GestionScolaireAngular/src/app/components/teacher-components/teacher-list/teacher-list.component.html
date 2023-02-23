@@ -1,1 +1,53 @@
-<p>teacher-list works!</p>
+<h1>Liste des professeur</h1>
+
+<div class="container-fluid">
+
+  <p ><app-teacher  *ngFor="let teacher of teachers" [teach]="teacher"> </app-teacher></p>
+  <div class="float-xxl-end"><button class="btn btn-outline-primary" (click)="open(content)">Ajouter un professeur</button></div>
+
+</div>
+
+
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Ajouter un professeur!</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="container-fluid">
+  <form  [formGroup]="ourForm" (ngSubmit)="submitForm()" >
+
+    <div class="mb-3">
+      <label for="firstName" class="form-label">Prénom</label>
+      <input type="text" class="form-control" id="firstName" >
+      <div *ngIf="formsubmitted && ourForm.controls['firstName'].errors?.['required'] "[ngStyle]="{color: 'red' }" > Le champ nom est obligatoire</div>
+    </div>
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Nom</label>
+      <input type="text" class="form-control" id="lastName" >
+      <div *ngIf="formsubmitted && ourForm.controls['lastName'].errors?.['required'] "[ngStyle]="{color: 'red' }" > Le champ nom est obligatoire</div>
+    </div>
+    <div class="mb-3">
+      <label for="subject" class="form-label">Matière enseignée</label>
+      <input type="text" class="form-control" id="subject" >
+      <div *ngIf="formsubmitted && ourForm.controls['subject'].errors?.['required'] "[ngStyle]="{color: 'red' }" > Le champ nom est obligatoire</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="capacity" class="form-label">Nombre de classes enseignées</label>
+      <input type="number" class="form-control" id="capacity">
+      <div *ngIf="formsubmitted && ourForm.controls['capacity'].errors?.['required'] "[ngStyle]="{color: 'red' }" > Le champ nom est obligatoire</div>
+    </div>
+
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-outline-dark">Enregistrer</button>
+  </div>
+  </form>
+  </div>
+</ng-template>
+
+
+
+
+

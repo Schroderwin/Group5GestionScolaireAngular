@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+*{ margin: 0;
+  padding: 0;
+  background-color: #FFF;
+  font-family: 'Poppins', sans-serif;
+
+}
+
+body {
+  max-width: 1000px;
+  margin: 5em auto;
+  padding: 50px;
+  border-radius: 1em;
+}
+
+
+

@@ -1,0 +1,15 @@
+.card-img {
+  background-color: #F2F3F5;
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  border-radius: 100%;
+
+}
+
+.card-body{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+

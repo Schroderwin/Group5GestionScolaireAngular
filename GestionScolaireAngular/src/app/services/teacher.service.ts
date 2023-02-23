@@ -8,13 +8,13 @@ import {Teacher} from "../model/teacher.model";
 })
 export class TeacherService {
 
-  url = 'http://localhost:8083/gestionscolaire';
+  url = 'http://localhost:8082/gestionscolaire';
 
   constructor(private http: HttpClient) {
   }
 
-  public getAll(idInst: number): Observable<Teacher[]> {
-    return this.http.get<Teacher[]>(`${this.url}/institution/${idInst}/teacher`);
+  public getAll(id_institution: number): Observable<Teacher[]> {
+    return this.http.get<Teacher[]>(`${this.url}/institution/${id_institution}/teacher`);
   }
 
   getOne(id: number): Observable<Teacher> {
