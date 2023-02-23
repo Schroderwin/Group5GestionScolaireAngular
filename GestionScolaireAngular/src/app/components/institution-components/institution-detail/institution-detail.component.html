@@ -3,9 +3,18 @@
   <h2>Catégorie : {{institution.type}}</h2>
   <h2>Nom : {{institution.name}}</h2>
   <h2>Téléphone : {{institution.phone}}</h2>
-  <h2>Liste des professeurs : </h2>
-  <app-teacher *ngFor="let n of teachers" [teacher]=n></app-teacher>
-  <app-subject *ngFor="let n of subjects" [subject]=n></app-subject>
-
+  <span [routerLink]="['/institution/' , institution.id,'teacher']">
+    <button>Gestion des professeurs</button>
+  </span>
+  <span [routerLink]="['/institution/' , institution.id,'subject']">
+    <button>Gestion des matières</button>
+  </span>
+  <span [routerLink]="['/institution/' , institution.id,'group-class']">
+    <button>Gestion des classes</button>
+  </span>
+  <span [routerLink]="['/institution/' , institution.id,'classroom']">
+    <button>Gestion des salles de classe</button>
+  </span>
+  <br><br><br>
   <button (click)=deleteInstitution()>Delete</button>
 </div>

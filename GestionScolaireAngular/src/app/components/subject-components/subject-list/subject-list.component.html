@@ -1,1 +1,58 @@
-<p>subject-list works!</p>
+<h1>Liste des matières</h1>
+
+<div class="container-fluid">
+
+  <p ><app-subject  *ngFor="let subject of subjects" [subject]="subject"> </app-subject></p>
+  <div class="float-xxl-end"><button class="btn btn-outline-primary" (click)="open(content)">Ajouter une matière</button></div>
+
+</div>
+
+
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Ajouter une matière : </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="container-fluid">
+
+    <ul *ngIf="formsubmitted">
+      <li *ngIf="ourForm.controls['institutionId'].errors?.['required']">L'Id de l'établissement est obligatoire</li>
+      <li *ngIf="ourForm.controls['firstName'].errors?.['required']">Le champ nom est obligatoire</li>
+      <li *ngIf="ourForm.controls['lastName'].errors?.['required']">Le champ prénom est obligatoire</li>
+      <li *ngIf="ourForm.controls['subject'].errors?.['required']">Le champ matière enseignée est obligatoire</li>
+      <li *ngIf="ourForm.controls['birthDate'].errors?.['required']">La date de naissance est obligatoire</li>
+    </ul>
+
+    <form  [formGroup]="ourForm" (ngSubmit)="c(submitForm())" >
+      <div class="mb-3">
+        <label for="name" class="form-label">Nom de la matière : </label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+      </div>
+      <div class="mb-3">
+        <label for="color" class="form-label">Couleur : </label>
+        <input type="text" class="form-control" id="color" formControlName="color">
+      </div>
+      <div formGroupName="institution">
+        <label for="institutionId" class="form-label">Etablissement :</label>
+        <select  id="institutionId" class="form-control" formControlName="institutionId">
+          <option  *ngFor="let ins of institutions" [value]=ins.id>{{ins.name}}</option>
+        </select>
+      </div>
+
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-dark">Enregistrer</button>
+      </div>
+    </form>
+    <pre>
+      {{ourForm.value | json}}
+    </pre>
+    Form status: {{ourForm.valid | json}}
+  </div>
+</ng-template>
+
+
+
+
+

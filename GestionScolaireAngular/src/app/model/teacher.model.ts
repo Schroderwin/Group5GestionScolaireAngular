@@ -1,4 +1,6 @@
 import {Subject} from "./subject.model";
+import {Institution} from "./institution.model";
+import {GroupClass} from "./groupclass.model";
 
 export interface Teacher {
   id: number,
@@ -6,4 +8,8 @@ export interface Teacher {
   lastName: string,
   birthDate: Date,
   subjects: Subject[]
+
+  groupClass: GroupClass;
+
+  institution: Institution;
 }

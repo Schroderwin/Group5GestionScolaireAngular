@@ -41,8 +41,6 @@ export class InstitutionDetailComponent {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.is.getOne(Number(id)).subscribe(p => this.institution = p)
-      this.teacherServ.getAll(this.institution.id).subscribe(t=> this.teachers=t)
-      this.subjectServ.getAll(this.institution.id).subscribe(t=> this.subjects=t)
     }
   }
 

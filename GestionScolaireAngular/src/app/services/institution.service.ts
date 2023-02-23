@@ -16,15 +16,15 @@ export class InstitutionService {
     return this.http.get<Institution[]>(this.url);
   }
 
-  getOne(id: number): Observable<Institution> {
-    return this.http.get<Institution>(`${this.url}/institution/${id}`);
+  getOne(idInst: number): Observable<Institution> {
+    return this.http.get<Institution>(`${this.url}/institution/${idInst}`);
   }
 
   add(institution: Institution): Observable<Institution> {
     return this.http.post<Institution>(`${this.url}/institution`, institution);
   }
 
-  delete(id: number): Observable<void> {
-    return this.http.delete<any>(`${this.url}/institution/${id}`);
+  delete(idInst: number): Observable<void> {
+    return this.http.delete<any>(`${this.url}/institution/${idInst}`);
   }
 }
