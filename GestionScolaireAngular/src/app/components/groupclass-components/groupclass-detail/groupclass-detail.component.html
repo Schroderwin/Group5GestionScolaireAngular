@@ -1,1 +1,15 @@
-<p>groupclass-detail works!</p>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{groupClass.name}} </h5>
+        <p class="card-text">Professeur principal: {{groupClass.teacher.lastName}} {{groupClass.teacher.firstName}}</p>
+        <a href="#" class="btn btn-primary">Retour à l'accueil</a>
+        <br><br><br>
+        <button (click)=deleteGroupClass()>Supprimer</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+

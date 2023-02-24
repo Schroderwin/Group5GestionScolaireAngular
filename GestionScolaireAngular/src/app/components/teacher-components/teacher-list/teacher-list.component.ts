@@ -59,9 +59,6 @@ export class TeacherListComponent implements  OnInit {
         subject: this.fb.group({
           id: ''
         }),
-        groupClass: this.fb.group({
-          id: ''
-        }),
         institution: this.fb.group({
           id: ''
         })
@@ -82,8 +79,8 @@ export class TeacherListComponent implements  OnInit {
     if (this.ourForm.valid) {
       console.log(this.ourForm.value)
       console.log(teacher)
-      this.ts.add(teacher).subscribe(t => this.router.navigateByUrl(`/institution/${id}`))
+      this.ts.add(teacher).subscribe(t => this.router.navigateByUrl(`/institution/${id}/teacher`))
     }
-
   }
+
 }

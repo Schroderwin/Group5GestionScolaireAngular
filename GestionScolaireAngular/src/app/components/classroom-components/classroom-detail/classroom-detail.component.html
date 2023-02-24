@@ -1,1 +1,15 @@
-<p>classroom-detail works!</p>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">{{classroom.name}}</h5>
+        <h5 class="capacity">Capacité d'accueil : {{classroom.capacity}}</h5>
+        <h5 class="excludedSubject" >Matière(s) exclue(s) :</h5>
+        <h6 class="excludedSubject" *ngFor="let sub of classroom.excludedSubjects">{{sub.name}}</h6>
+        <br><br><br>
+        <button (click)=deleteClassroom()>Supprimer</button>
+      </div>
+    </div>
+  </div>
+
+</div>

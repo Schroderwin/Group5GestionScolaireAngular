@@ -21,7 +21,6 @@
       <li *ngIf="ourForm.controls['firstName'].errors?.['required']">Le champ nom est obligatoire</li>
       <li *ngIf="ourForm.controls['lastName'].errors?.['required']">Le champ prénom est obligatoire</li>
       <li *ngIf="ourForm.controls['subject'].errors?.['required']">Le champ matière enseignée est obligatoire</li>
-      <li *ngIf="ourForm.controls['birthDate'].errors?.['required']">La date de naissance est obligatoire</li>
     </ul>
 
     <form  [formGroup]="ourForm" (ngSubmit)="c(submitForm())" >
@@ -41,12 +40,6 @@
         <label for="subjectId" class="form-label">Matière(s) :</label>
         <select  id="subjectId" class="form-control" formControlName="id">
           <option  *ngFor="let sub of subjects" [value]=sub.id>{{sub.name}}</option>
-        </select>
-      </div>
-      <div formGroupName="groupClass">
-        <label for="groupClassId" class="form-label">Classe :</label>
-        <select  id="groupClassId" class="form-control" formControlName="id">
-          <option  *ngFor="let grp of groupClasses" [value]=grp.id>{{grp.name}}</option>
         </select>
       </div>
       <div formGroupName="institution">
