@@ -29,7 +29,9 @@ export class TeacherListComponent implements  OnInit {
   formsubmitted = false;
 
   subjects: Subject[] = []
+
   groupClasses: GroupClass[] = []
+  groupClass!: GroupClass
 
   institutions: Institution[] = []
 
@@ -53,14 +55,14 @@ export class TeacherListComponent implements  OnInit {
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         birthDate: ['', Validators.required],
-        subjects: this.fb.group({
-          subjectId: ''
-        }),
-        groupClasses: this.fb.group({
-          groupClassId: ''
+        subjects: this.fb.group([{
+          id: ''
+        }]),
+        groupClass: this.fb.group({
+          id: ''
         }),
         institution: this.fb.group({
-          institutionId: ''
+          id: ''
         })
       }
     )

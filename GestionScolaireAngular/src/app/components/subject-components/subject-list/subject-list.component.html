@@ -35,8 +35,8 @@
         <input type="text" class="form-control" id="color" formControlName="color">
       </div>
       <div formGroupName="institution">
-        <label for="institutionId" class="form-label">Etablissement :</label>
-        <select  id="institutionId" class="form-control" formControlName="institutionId">
+        <label for="id" class="form-label">Etablissement :</label>
+        <select  id="id" class="form-control" formControlName="id">
           <option  *ngFor="let ins of institutions" [value]=ins.id>{{ins.name}}</option>
         </select>
       </div>

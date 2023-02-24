@@ -39,19 +39,19 @@
       </div>
       <div formGroupName="subjects">
         <label for="subjectId" class="form-label">Matière(s) :</label>
-        <select  id="subjectId" class="form-control" formControlName="subjectId">
+        <select  id="subjectId" class="form-control" formControlName="id">
           <option  *ngFor="let sub of subjects" [value]=sub.id>{{sub.name}}</option>
         </select>
       </div>
-      <div formGroupName="groupClasses">
+      <div formGroupName="groupClass">
         <label for="groupClassId" class="form-label">Classe :</label>
-        <select  id="groupClassId" class="form-control" formControlName="groupClassId">
+        <select  id="groupClassId" class="form-control" formControlName="id">
           <option  *ngFor="let grp of groupClasses" [value]=grp.id>{{grp.name}}</option>
         </select>
       </div>
       <div formGroupName="institution">
         <label for="institutionId" class="form-label">Etablissement :</label>
-        <select  id="institutionId" class="form-control" formControlName="institutionId">
+        <select  id="institutionId" class="form-control" formControlName="id">
           <option  *ngFor="let ins of institutions" [value]=ins.id>{{ins.name}}</option>
         </select>
       </div>
