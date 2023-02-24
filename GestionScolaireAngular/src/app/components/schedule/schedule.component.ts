@@ -77,6 +77,7 @@ export class ScheduleComponent  {
               private modalService: NgbModal) {
   }
 
+
   handleCalendarToggle() {
     this.calendarVisible = !this.calendarVisible;
   }
