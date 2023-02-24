@@ -28,7 +28,8 @@ export class TeacherListComponent implements  OnInit {
   ourForm!: FormGroup
   formsubmitted = false;
 
-  subjects: Subject[] = []
+  subjects!: Subject[]
+  subject!: Subject
 
   groupClasses: GroupClass[] = []
   groupClass!: GroupClass
@@ -55,9 +56,9 @@ export class TeacherListComponent implements  OnInit {
         firstName: ['', Validators.required],
         lastName: ['', Validators.required],
         birthDate: ['', Validators.required],
-        subjects: this.fb.group([{
+        subject: this.fb.group({
           id: ''
-        }]),
+        }),
         groupClass: this.fb.group({
           id: ''
         }),
@@ -75,9 +76,13 @@ export class TeacherListComponent implements  OnInit {
   submitForm() {
     const id=Number(this.activatedRoute.snapshot.paramMap.get('id') || '');
     this.formsubmitted = true
+    let teacher:Teacher = this.ourForm.value as Teacher
+    teacher.subjects = new Array(this.ourForm.value.subject);
+    console.log(teacher.subjects)
     if (this.ourForm.valid) {
-      console.log("on est la")
-      this.ts.add(this.ourForm.value).subscribe(t => this.router.navigateByUrl(`/institution/${id}`))
+      console.log(this.ourForm.value)
+      console.log(teacher)
+      this.ts.add(teacher).subscribe(t => this.router.navigateByUrl(`/institution/${id}`))
     }
 
   }

@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Subject} from "../../../model/subject.model";
 import {TeacherService} from "../../../services/teacher.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {SubjectService} from "../../../services/subject.service";
 
 @Component({
@@ -13,7 +13,8 @@ export class SubjectDetailComponent {
 
   subject!: Subject;
 
-  constructor(private subS: SubjectService, private activatedRoute: ActivatedRoute) {
+  constructor(private subS: SubjectService, private activatedRoute: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -21,6 +22,12 @@ export class SubjectDetailComponent {
     if (id) {
       this.subS.getOne(Number(id)).subscribe(t => this.subject = t);
     }
-
   }
+
+  deleteSubject(){
+    const id=this.subject.institution.id
+    this.subS.delete(this.subject.id)
+      .subscribe(v => this.router.navigateByUrl(`/institution/${id}/subject`))
+  }
+
 }
