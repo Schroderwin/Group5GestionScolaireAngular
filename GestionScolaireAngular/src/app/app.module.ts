@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -23,6 +24,8 @@ import { SubjectDetailComponent } from './components/subject-components/subject-
 import { TeacherComponent } from './components/teacher-components/teacher/teacher.component';
 import { TeacherListComponent } from './components/teacher-components/teacher-list/teacher-list.component';
 import { TeacherDetailComponent } from './components/teacher-components/teacher-detail/teacher-detail.component';
+import { ScheduleComponent } from './components/schedule/schedule.component';
+
 
 
 const routes : Routes = [
@@ -32,6 +35,7 @@ const routes : Routes = [
   {path: 'institution/:id/classroom', component: ClassroomListComponent},
   {path: 'classroom/:id', component: ClassroomDetailComponent},
   {path: 'institution/:id/group-class', component: GroupclassListComponent},
+  {path: 'institution/:id/group-class/:id/schedule', component: ScheduleComponent},
   {path: 'group-class/:id', component: GroupclassDetailComponent},
   {path: 'institution/:id/subject', component: SubjectListComponent},
   {path: 'subject/:id', component: SubjectDetailComponent},
@@ -58,7 +62,8 @@ const routes : Routes = [
     SubjectDetailComponent,
     TeacherComponent,
     TeacherListComponent,
-    TeacherDetailComponent
+    TeacherDetailComponent,
+    ScheduleComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +72,8 @@ const routes : Routes = [
     ReactiveFormsModule,
     RouterOutlet,
     RouterModule.forRoot(routes),
-    NgbModule
+    NgbModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
