@@ -7,8 +7,6 @@
 <button class="btn btn-outline-primary" (click)="open(content)">Ajouter un professeur</button>
 
 
-
-
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Ajouter un professeur</h4>
@@ -36,9 +34,22 @@
         <label for="birthDate" class="form-label">Date de naissance :</label>
         <input type="text" class="form-control" id="birthDate" formControlName="birthDate">
       </div>
-      <div formGroupName="subject">
-        <label for="subjectId" class="form-label">Matière(s) :</label>
-        <select  id="subjectId" class="form-control" formControlName="id">
+
+      <div formGroupName="subject1">
+        <label for="subject1Id" class="form-label">Matière principale :</label>
+        <select  id="subject1Id" class="form-control" formControlName="id">
+          <option  *ngFor="let sub of subjects" [value]=sub.id>{{sub.name}}</option>
+        </select>
+      </div>
+      <div formGroupName="subject2">
+        <label for="subject2Id" class="form-label">2e matière (optionnel) :</label>
+        <select  id="subject2Id" class="form-control" formControlName="id">
+          <option  *ngFor="let sub of subjects" [value]=sub.id>{{sub.name}}</option>
+        </select>
+      </div>
+      <div formGroupName="subject3">
+        <label for="subject3Id" class="form-label">3e matiere (optionnel) :</label>
+        <select  id="subject3Id" class="form-control" formControlName="id">
           <option  *ngFor="let sub of subjects" [value]=sub.id>{{sub.name}}</option>
         </select>
       </div>
