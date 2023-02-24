@@ -1,17 +1,19 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { CalendarOptions, DateSelectArg, EventClickArg, EventApi } from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import { INITIAL_EVENTS, createEventId } from './event-utils';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-root',
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.css']
 })
-export class ScheduleComponent {
+export class ScheduleComponent  {
   calendarVisible = true;
   calendarOptions: CalendarOptions = {
     plugins: [
@@ -80,6 +82,7 @@ export class ScheduleComponent {
     }
   }
 
+
   handleEventClick(clickInfo: EventClickArg) {
     if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
       clickInfo.event.remove();
@@ -90,4 +93,24 @@ export class ScheduleComponent {
     this.currentEvents = events;
     this.changeDetector.detectChanges();
   }
+
+
+// generer le PDF en utilisant jsPDF et html2canvas pour la capture d'écran
+  generatePdf() {
+
+    const doc = new jsPDF();
+
+    const calendarEl = document.getElementById('calendar');
+
+    // @ts-ignore
+    html2canvas(calendarEl).then((canvas) => {
+      const imgData = canvas.toDataURL('png');
+      console.log(imgData)
+
+      doc.addImage(imgData, 'png', 10, 10, 190, 190);
+
+      doc.save('calendrier.pdf');
+    });
+  }
+
 }

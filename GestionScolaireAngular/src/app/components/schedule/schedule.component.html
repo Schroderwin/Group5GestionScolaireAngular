@@ -3,12 +3,15 @@
 
 
   <div class='demo-app-main'>
-    <full-calendar *ngIf='calendarVisible' [options]='calendarOptions'>
+    <full-calendar *ngIf='calendarVisible' [options]='calendarOptions' id="calendar">
 <!--      <ng-template #eventContent let-arg>-->
 <!--        <b>{{ arg.timeText }}</b>-->
 <!--        <i>{{ arg.event.title }}</i>-->
 <!--      </ng-template>-->
     </full-calendar>
+    <div>
+      <button (click)="generatePdf()">Generate PDF</button>
+    </div>
   </div>
 
 </div>
