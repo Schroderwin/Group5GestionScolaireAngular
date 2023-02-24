@@ -16,22 +16,30 @@ export class ScheduleComponent {
   calendarOptions: CalendarOptions = {
     plugins: [
       interactionPlugin,
-      dayGridPlugin,
+      // dayGridPlugin,
       timeGridPlugin,
-      listPlugin,
+      // listPlugin,
     ],
-    headerToolbar: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+    headerToolbar: false,
+    views: {
+      timeGridSixDay: {
+        type: 'timeGrid',
+        duration: {days: 6},
+        // buttonText: '6 day'
+      }
     },
-    initialView: 'dayGridMonth',
+    dayHeaderFormat: { weekday: 'long' },
+    initialView: 'timeGridSixDay',
     initialEvents: INITIAL_EVENTS, // alternatively, use the `events` setting to fetch from a feed
-    weekends: true,
+    // weekends: true,
+    locale: 'fr',
     editable: true,
     selectable: true,
     selectMirror: true,
-    dayMaxEvents: true,
+    // dayMaxEvents: true,
+    initialDate: "2023-01-02",
+    slotMinTime: '08:00',
+    slotMaxTime: '20:00',
     select: this.handleDateSelect.bind(this),
     eventClick: this.handleEventClick.bind(this),
     eventsSet: this.handleEvents.bind(this)
