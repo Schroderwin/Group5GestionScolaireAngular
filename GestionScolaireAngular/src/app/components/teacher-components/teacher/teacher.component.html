@@ -2,8 +2,8 @@
 <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
   <div class="card-header">{{teacher.firstName}}</div>
   <div class="card-body">
-    <h5 class="severity">Matière(s) enseignée(s) : {{teacher.subjects}}</h5>
-    <h5 class="Type">Birthdate : {{teacher.birthDate}}</h5>
+    <h5 class="severity" >Matière(s) enseignée(s) :</h5>
+    <h6 class="severity" *ngFor="let sub of teacher.subjects">{{sub.name}}</h6>
   </div>
 </div>
 </span>

@@ -64,7 +64,7 @@ export class SubjectListComponent {
     this.formsubmitted = true
     if (this.ourForm.valid) {
       console.log("on est la")
-      this.subServ.add(this.ourForm.value).subscribe(t => this.router.navigateByUrl(`/institution/${id}`))
+      this.subServ.add(this.ourForm.value).subscribe(t => this.router.navigateByUrl(`/institution/${id}/subject`))
     }
 
   }

@@ -1,1 +1,62 @@
-<p>classroom-list works!</p>
+<h1>Gestion des salles de classes :</h1>
+<br><br>
+<div class="container-fluid">
+  <app-classroom  *ngFor="let classroom of classrooms" [classroom]="classroom"> </app-classroom>
+</div>
+<br><br>
+<button class="btn btn-outline-primary" (click)="open(content)">Ajouter une salle de classe</button>
+
+
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Ajouter une salle de classe</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="container-fluid">
+
+    <ul *ngIf="formsubmitted">
+      <li *ngIf="ourForm.controls['institutionId'].errors?.['required']">L'Id de l'établissement est obligatoire</li>
+      <li *ngIf="ourForm.controls['name'].errors?.['required']">Le champ nom est obligatoire</li>
+      <li *ngIf="ourForm.controls['capacity'].errors?.['required']">Le champ capacité est obligatoire</li>
+      <li *ngIf="ourForm.controls['excludedSubject'].errors?.['required']">Le champ matière interdite est obligatoire</li>
+    </ul>
+
+    <form  [formGroup]="ourForm" (ngSubmit)="c(submitForm())" >
+      <div class="mb-3">
+        <label for="name" class="form-label">Nom :</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+      </div>
+      <div class="mb-3">
+        <label for="capacity" class="form-label">Capacité :</label>
+        <input type="text" class="form-control" id="capacity" formControlName="capacity">
+      </div>
+      <div formGroupName="excludedSubject">
+        <label for="excludedSubjectId" class="form-label">Matière(s) interdite(s) :</label>
+        <select  id="excludedSubjectId" class="form-control" formControlName="id">
+          <option  *ngFor="let sub of subjects" [value]=sub.id>{{sub.name}}</option>
+        </select>
+      </div>
+      <div formGroupName="institution">
+        <label for="institutionId" class="form-label">Etablissement :</label>
+        <select  id="institutionId" class="form-control" formControlName="id">
+          <option  *ngFor="let ins of institutions" [value]=ins.id>{{ins.name}}</option>
+        </select>
+      </div>
+
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-dark">Enregistrer</button>
+      </div>
+    </form>
+    <pre>
+      {{ourForm.value | json}}
+    </pre>
+    Form status: {{ourForm.valid | json}}
+  </div>
+</ng-template>
+
+
+
+
+

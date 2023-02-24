@@ -1,1 +1,57 @@
-<p>groupclass-list works!</p>
+<h1>Gestion des classes :</h1>
+<br><br>
+<div class="container-fluid">
+  <app-groupclass  *ngFor="let groupClass of groupClasses" [groupClass]="groupClass"> </app-groupclass>
+</div>
+<br><br>
+<button class="btn btn-outline-primary" (click)="open(content)">Ajouter une classe</button>
+
+
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Ajouter une classe</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="container-fluid">
+
+    <ul *ngIf="formsubmitted">
+      <li *ngIf="ourForm.controls['institutionId'].errors?.['required']">L'Id de l'établissement est obligatoire</li>
+      <li *ngIf="ourForm.controls['name'].errors?.['required']">Le champ nom est obligatoire</li>
+      <li *ngIf="ourForm.controls['teacherId'].errors?.['required']">Le champ professeur principal est obligatoire</li>
+    </ul>
+
+    <form  [formGroup]="ourForm" (ngSubmit)="c(submitForm())" >
+      <div class="mb-3">
+        <label for="name" class="form-label">Nom de la classe :</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+      </div>
+      <div formGroupName="teacher">
+        <label for="teacherId" class="form-label">Professeur principal :</label>
+        <select  id="teacherId" class="form-control" formControlName="id">
+          <option  *ngFor="let teacher of teachers" [value]=teacher.id>{{teacher.lastName}} {{teacher.firstName}}</option>
+        </select>
+      </div>
+      <div formGroupName="institution">
+        <label for="institutionId" class="form-label">Etablissement :</label>
+        <select  id="institutionId" class="form-control" formControlName="id">
+          <option  *ngFor="let ins of institutions" [value]=ins.id>{{ins.name}}</option>
+        </select>
+      </div>
+
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-outline-dark">Enregistrer</button>
+      </div>
+    </form>
+    <pre>
+      {{ourForm.value | json}}
+    </pre>
+    Form status: {{ourForm.valid | json}}
+  </div>
+</ng-template>
+
+
+
+
+

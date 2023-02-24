@@ -1,8 +1,10 @@
 import {Subject} from "./subject.model";
+import {Institution} from "./institution.model";
 
 export interface Classroom {
   id: number,
   name: string,
-  excludedSubject: Subject[],
-  capacity: number
+  excludedSubjects: Subject[],
+  capacity: number,
+  institution: Institution
 }

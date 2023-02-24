@@ -1,1 +1,8 @@
-<p>groupclass works!</p>
+<span [routerLink]="['/group-class', groupClass.id]">
+<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+  <div class="card-header">{{groupClass.name}}</div>
+  <div class="card-body">
+    <h5 class="severity">Professeur principal : {{groupClass.teacher.lastName}} {{groupClass.teacher.firstName}}</h5>
+  </div>
+</div>
+</span>
