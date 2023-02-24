@@ -37,7 +37,7 @@
         <label for="birthDate" class="form-label">Date de naissance :</label>
         <input type="text" class="form-control" id="birthDate" formControlName="birthDate">
       </div>
-      <div formGroupName="subjects">
+      <div formGroupName="subject">
         <label for="subjectId" class="form-label">Matière(s) :</label>
         <select  id="subjectId" class="form-control" formControlName="id">
           <option  *ngFor="let sub of subjects" [value]=sub.id>{{sub.name}}</option>

@@ -25,8 +25,9 @@ export class TeacherDetailComponent implements OnInit {
   }
 
   deleteTeacher(){
+    const id=this.teacher.institution.id
     this.ts.delete(this.teacher.id)
-      .subscribe(v => this.router.navigateByUrl('/institution'))
+      .subscribe(v => this.router.navigateByUrl(`/institution/${id}/teacher`))
   }
 
 
