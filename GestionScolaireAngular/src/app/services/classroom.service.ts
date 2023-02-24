@@ -7,24 +7,24 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class ClassroomService {
-  url = 'http://localhost:8083/gestionscolaire/institution/1/classroom';
+  url = 'http://localhost:8083/gestionscolaire';
 
   constructor(private http: HttpClient) {
   }
 
-  public getAll(): Observable<Classroom[]> {
-    return this.http.get<Classroom[]>(this.url);
+  public getAll(idInst: number): Observable<Classroom[]> {
+    return this.http.get<Classroom[]>(`${this.url}/institution/${idInst}/classroom`);
   }
 
   getOne(id: number): Observable<Classroom> {
-    return this.http.get<Classroom>(`${this.url}/${id}`);
+    return this.http.get<Classroom>(`${this.url}/classroom/${id}`);
   }
 
   add(classroom: Classroom): Observable<Classroom> {
-    return this.http.post<Classroom>(`${this.url}`, classroom);
+    return this.http.post<Classroom>(`${this.url}/classroom`, classroom);
   }
 
   delete(id: number): Observable<void> {
-    return this.http.delete<any>(`${this.url}/${id}`);
+    return this.http.delete<any>(`${this.url}/classroom/${id}`);
   }
 }

@@ -1,1 +1,9 @@
-<p>teacher works!</p>
+<span [routerLink]="['/teacher', teacher.id]">
+<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+  <div class="card-header">{{teacher.firstName}}</div>
+  <div class="card-body">
+    <h5 class="severity">Matière(s) enseignée(s) : {{teacher.subjects}}</h5>
+    <h5 class="Type">Birthdate : {{teacher.birthDate}}</h5>
+  </div>
+</div>
+</span>
