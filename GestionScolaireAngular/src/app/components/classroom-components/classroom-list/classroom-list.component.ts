@@ -50,7 +50,13 @@ export class ClassroomListComponent {
     this.ourForm = this.fb.group({
       name: ['', Validators.required],
       capacity: ['', Validators.required],
-      excludedSubject: this.fb.group({
+      excludedSubject1: this.fb.group({
+        id: ''
+      }),
+      excludedSubject2: this.fb.group({
+        id: ''
+      }),
+      excludedSubject3: this.fb.group({
         id: ''
       }),
       institution: this.fb.group({
@@ -67,10 +73,17 @@ export class ClassroomListComponent {
     const id=Number(this.activatedRoute.snapshot.paramMap.get('id') || '');
     this.formsubmitted = true
     let classroom:Classroom = this.ourForm.value as Classroom
-    classroom.excludedSubjects = new Array(this.ourForm.value.excludedSubject);
+    classroom.excludedSubjects = new Array();
+
+    let arr = [this.ourForm.value.excludedSubject1, this.ourForm.value.excludedSubject2,this.ourForm.value.excludedSubject3];
+
+    for (var val of arr) {
+      if(val.id!='')
+        classroom.excludedSubjects.push(val);
+    }
     console.log(classroom.excludedSubjects)
     if (this.ourForm.valid) {
-      this.roomServ.add(this.ourForm.value).subscribe(t => this.router.navigateByUrl(`/institution/${id}/classroom`))
+      this.roomServ.add(classroom).subscribe(t => this.router.navigateByUrl(`/institution/${id}/classroom`))
     }
   }
 

@@ -4,9 +4,12 @@
       <div class="card-body">
         <h5 class="card-title">{{groupClass.name}} </h5>
         <p class="card-text">Professeur principal: {{groupClass.teacher.lastName}} {{groupClass.teacher.firstName}}</p>
-        <a href="#" class="btn btn-primary">Retour à l'accueil</a>
+        <br>
+        <a href="institution/{{groupClass.institution.id}}/group-class/{{groupClass.id}}/schedule" class="btn btn-primary" >Accéder au calendrier</a>
+        <br>
+        <a class="btn btn-primary" style="background-color: red" (click)=deleteGroupClass()>Supprimer</a>
         <br><br><br>
-        <button (click)=deleteGroupClass()>Supprimer</button>
+        <a href="#" class="btn btn-primary">Retour à l'accueil</a>
       </div>
     </div>
   </div>

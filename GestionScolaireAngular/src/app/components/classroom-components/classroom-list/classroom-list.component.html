@@ -32,9 +32,21 @@
         <label for="capacity" class="form-label">Capacité :</label>
         <input type="text" class="form-control" id="capacity" formControlName="capacity">
       </div>
-      <div formGroupName="excludedSubject">
-        <label for="excludedSubjectId" class="form-label">Matière(s) interdite(s) :</label>
-        <select  id="excludedSubjectId" class="form-control" formControlName="id">
+      <div formGroupName="excludedSubject1">
+        <label for="subject1Id" class="form-label">Première matière interdite : (optionnel)</label>
+        <select  id="subject1Id" class="form-control" formControlName="id">
+          <option  *ngFor="let sub of subjects" [value]=sub.id>{{sub.name}}</option>
+        </select>
+      </div>
+      <div formGroupName="excludedSubject2">
+        <label for="subject2Id" class="form-label">Deuxième matière interdite : (optionnel)</label>
+        <select  id="subject2Id" class="form-control" formControlName="id">
+          <option  *ngFor="let sub of subjects" [value]=sub.id>{{sub.name}}</option>
+        </select>
+      </div>
+      <div formGroupName="excludedSubject3">
+        <label for="subject3Id" class="form-label">Toisième matière interdite : (optionnel)</label>
+        <select  id="subject3Id" class="form-control" formControlName="id">
           <option  *ngFor="let sub of subjects" [value]=sub.id>{{sub.name}}</option>
         </select>
       </div>

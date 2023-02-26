@@ -8,9 +8,10 @@
         <p class="severity" *ngFor="let sub of teacher.subjects">{{sub.name}}</p>
         <br>
         <p class="card-text">Date de naissance: {{teacher.birthDate}}</p>
-        <a href="#" class="btn btn-primary">Retour à l'accueil</a>
+        <br>
+        <button class="btn btn-primary" style="background-color: red" (click)=deleteTeacher()>Supprimer</button>
         <br><br><br>
-        <button (click)=deleteTeacher()>Supprimer</button>
+        <a href="#" class="btn btn-primary">Retour à l'accueil</a>
       </div>
     </div>
   </div>
