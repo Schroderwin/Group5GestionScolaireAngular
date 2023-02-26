@@ -7,7 +7,7 @@
         <h5 class="excludedSubject" >Matière(s) exclue(s) :</h5>
         <h6 class="excludedSubject" *ngFor="let sub of classroom.excludedSubjects">{{sub.name}}</h6>
         <br><br><br>
-        <button (click)=deleteClassroom()>Supprimer</button>
+        <button class="btn btn-primary" style="background-color: red" (click)=deleteClassroom()>Supprimer</button>
       </div>
     </div>
   </div>
