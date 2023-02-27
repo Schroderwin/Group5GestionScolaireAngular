@@ -5,7 +5,7 @@
         <h5 class="card-title">{{groupClass.name}} </h5>
         <p class="card-text">Professeur principal: {{groupClass.teacher.lastName}} {{groupClass.teacher.firstName}}</p>
         <br>
-        <a href="institution/{{groupClass.institution.id}}/group-class/{{groupClass.id}}/schedule" class="btn btn-primary" >Accéder au calendrier</a>
+        <a href="group-class/{{groupClass.id}}/schedule" class="btn btn-primary" >Accéder au calendrier</a>
         <br>
         <a class="btn btn-primary" style="background-color: red" (click)=deleteGroupClass()>Supprimer</a>
         <br><br><br>
