@@ -6,6 +6,7 @@
     <full-calendar *ngIf='calendarVisible' [options]='calendarOptions' (click)="open(content)"  id="calendar">
 <!--      <ng-template #eventContent let-arg>-->
 <!--        <b>{{ arg.timeText }}</b>-->
+<!--        <b>{{ arg.timeText }}</b>-->
 <!--        <i>{{ arg.event.title }}</i>-->
 <!--      </ng-template>-->
 
@@ -20,7 +21,7 @@
 </div>
 
 
-//Modal
+<!--Modal-->
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Selection</h4>
@@ -28,54 +29,66 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+  <form  [formGroup]="ourForm" (ngSubmit)="handleSelect($event)" >
   <div class="modal-body">
     <!--formulaire -->
 
 
-    <form  [formGroup]="ourForm" (ngSubmit)="(submitForm())" >
+
       <ul>
-        <li> Jour:  {{ startDay }}  </li>
-        <li> Debut:  {{ startTime | date: 'h:mm a' }}</li>
-        <li> Fin: {{ endTime | date: 'h:mm a' }}</li>
+
+        <li> Jour: <input type="hidden" formControlName="startDay" [(ngModel)]="startDay"   /> {{ startDay }}  </li>
+
+
+        <li> Debut:<input type="hidden" formControlName="startTime" [(ngModel)]="startTime" /> {{ startTime | date: 'h:mm a' }} </li>
+
+        <li> Fin: <input type="hidden" formControlName="endTime" [(ngModel)]="endTime"   />{{ endTime | date: 'h:mm a' }}</li>
 
       </ul>
       <div formGroupName="teacher">
-        <label for="teacherId" class="form-label">Professeur :</label>
-        <select  id="teacherId" class="form-control" formControlName="id">
-          <option  *ngFor="let teacher of teachers" [value]=teacher.id>{{teacher.lastName}} {{teacher.firstName}}</option>
+        <label for="teacher" class="form-label">Professeur :</label>
+        <select  id="teacher" class="form-control" formControlName="firstName">
+          <option  *ngFor="let teacher of teachers" [value]=teacher.firstName >{{teacher.lastName}} {{teacher.firstName}}</option>
         </select>
       </div>
       <div formGroupName="subject">
-        <label for="subjectId" class="form-label">Matière(s) :</label>
-        <select  id="subjectId" class="form-control" formControlName="id">
-          <option  *ngFor="let sub of subjects" [value]=sub.id>{{sub.name}}</option>
+        <label for="subject" class="form-label">Matière(s) :</label>
+        <select  id="subject" class="form-control" formControlName="name">
+          <option  *ngFor="let sub of subjects" [value]=sub.name>{{sub.name}}</option>
         </select>
       </div>
       <div formGroupName="room">
-        <label for="classId" class="form-label">Salle de classe :</label>
-        <select  id="classId" class="form-control" formControlName="id">
-          <option  *ngFor="let room of classrooms" [value]=room.id>{{room.name}}</option>
+        <label for="room" class="form-label">Salle de classe :</label>
+        <select  id="room" class="form-control" formControlName="name">
+          <option  *ngFor="let room of classrooms" [value]=room.name>{{room.name}}</option>
         </select>
       </div>
-    </form>
+
+
 
 
   </div>
 
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Annuler</button>
-    <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Sauvegarder</button>
+    <button type="submit" class="btn btn-primary" >Sauvegarder</button>
 
   </div>
+  </form>
+  <ul *ngIf="formsubmitted">
+    <li *ngIf="ourForm.controls['startDay'].errors?.['required']">Le jour est obligatoire</li>
+    <li *ngIf="ourForm.controls['startTime'].errors?.['required']">L'heure de début est obligatoire</li>
+    <li *ngIf="ourForm.controls['endTime'].errors?.['required']">L'heude de fin est obligatoire</li>
+    <li *ngIf="ourForm.controls['teacher'].errors?.['required']">Le nom du professeur est obligatoire</li>
+    <li *ngIf="ourForm.controls['subject'].errors?.['required']">La matière est obligatoire</li>
+    <li *ngIf="ourForm.controls['room'].errors?.['required']">La salle de classe est obligatoire</li>
 
+  </ul>
+
+  <div>
+  <pre>
+      {{ourForm.value | json}}
+    </pre>
+  Form status: {{ourForm.valid | json}}
+  </div>
 </ng-template>
-
-
-
-
-
-
-
-
-
-gitt

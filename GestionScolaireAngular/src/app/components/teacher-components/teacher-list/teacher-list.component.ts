@@ -37,7 +37,7 @@ export class TeacherListComponent implements  OnInit {
   institutions: Institution[] = []
 
   constructor(private ts: TeacherService, config: NgbModalConfig,
-              private modalService: NgbModal, private router:Router,
+                private modalService: NgbModal, private router:Router,
               private fb: FormBuilder, private activatedRoute: ActivatedRoute,
               private insServ: InstitutionService,
               private subServ: SubjectService,

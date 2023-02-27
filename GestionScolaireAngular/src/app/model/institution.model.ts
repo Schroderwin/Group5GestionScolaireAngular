@@ -1,4 +1,4 @@
-import {Subject} from "./subject.model";
+ import {Subject} from "./subject.model";
 import {Type} from "./type.model";
 
 export interface Institution {
