@@ -8,7 +8,7 @@ import {Teacher} from "../model/teacher.model";
 })
 export class TeacherService {
 
-  url = 'http://localhost:8083/gestionscolaire';
+  url = 'http://localhost:8082/gestionscolaire';
 
   constructor(private http: HttpClient) {
   }

@@ -7,7 +7,7 @@ import {Institution} from "../model/institution.model";
   providedIn: 'root'
 })
 export class InstitutionService {
-  url = 'http://localhost:8083/gestionscolaire';
+  url = 'http://localhost:8082/gestionscolaire';
 
   constructor(private http: HttpClient) {
   }

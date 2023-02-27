@@ -8,7 +8,7 @@ import {GroupClass} from "../model/groupclass.model";
   providedIn: 'root'
 })
 export class GroupClassService {
-  url = 'http://localhost:8083/gestionscolaire';
+  url = 'http://localhost:8082/gestionscolaire';
 
   constructor(private http: HttpClient) {
   }
