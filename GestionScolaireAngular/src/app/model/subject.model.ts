@@ -6,7 +6,7 @@ export interface Subject {
   name: string,
   color: string
 
-  scheduleEvents: ScheduleEvent[];
+  scheduleEvents: ScheduleEvent[],
 
-  institution: Institution;
+  institution: Institution
 }

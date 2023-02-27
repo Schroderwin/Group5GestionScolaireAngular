@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="card">
-      <div class="card-body">
+      <div  *ngIf="groupClass" class="card-body">
         <h5 class="card-title">{{groupClass.name}} </h5>
         <p class="card-text">Professeur principal: {{groupClass.teacher.lastName}} {{groupClass.teacher.firstName}}</p>
         <br>

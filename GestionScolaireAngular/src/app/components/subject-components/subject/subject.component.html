@@ -1,8 +1,10 @@
-<span [routerLink]="['/subject', subject.id]">
-<div class="card text-white mb-3" style="max-width: 18rem;background-color: {{subject.color}}">
-  <div class="card-header">{{subject.name}}</div>
-  <div class="card-body">
-    <h5 class="severity">Nom de la matière : {{subject.name}}</h5>
-  </div>
+<div *ngIf="subject">
+  <span [routerLink]="['/subject', subject.id]">
+    <div class="card text-white mb-3" style="max-width: 18rem;background-color: {{subject.color}}">
+      <div class="card-header">{{subject.name}}</div>
+      <div class="card-body">
+        <h5 class="severity">Nom de la matière : {{subject.name}}</h5>
+      </div>
+    </div>
+  </span>
 </div>
-</span>

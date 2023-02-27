@@ -23,10 +23,10 @@ export class GroupclassDetailComponent {
   }
   ngOnInit(): void {
     const id=this.activatedRoute.snapshot.paramMap.get('id') || '';
-    if(id){
       this.groupServ.getOne(Number(id)).subscribe(grp => this.groupClass = grp);
-      this.ts.getOne(this.groupClass.teacher.id).subscribe(t => this.teacher = t);
-    }
+      if (this.groupClass) {
+        this.ts.getOne(this.groupClass.teacher.id).subscribe(t => this.teacher = t);
+      }
   }
 
   deleteGroupClass(){
