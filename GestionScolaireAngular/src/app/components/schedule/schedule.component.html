@@ -34,6 +34,7 @@
     </button>
   </div>
 
+
   <form  [formGroup]="ourForm" (ngSubmit)="handleSelect($event)" >
     <div class="modal-body">
       <!--formulaire -->
@@ -65,16 +66,14 @@
         </select>
       </div>
 
-
-
-
-    </div>
-
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Annuler</button>
-      <button type="submit" class="btn btn-primary" >Sauvegarder</button>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Annuler</button>
+        <button type="submit" class="btn btn-primary" (click)="modal.close('Save click')">Sauvegarder</button>
+      </div>
 
     </div>
+
+
   </form>
   <ul *ngIf="formsubmitted">
     <li *ngIf="ourForm.controls['startDay'].errors?.['required']">Le jour est obligatoire</li>
@@ -85,14 +84,9 @@
     <li *ngIf="ourForm.controls['room'].errors?.['required']">La salle de classe est obligatoire</li>
 
   </ul>
-  
-  <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Annuler</button>
-    <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Sauvegarder</button>
 
-  </div>
 
-</ng-template>
+
 
   <div>
   <pre>
@@ -108,6 +102,3 @@
 
 
 
-
-
-gitt

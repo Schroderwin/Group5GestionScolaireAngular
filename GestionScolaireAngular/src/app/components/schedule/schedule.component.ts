@@ -34,7 +34,7 @@ import {cs} from "@fullcalendar/core/internal-common";
 })
 export class ScheduleComponent  {
   calendarVisible = true;
-  events: EventInput[] = [];
+  //events: EventInput[] = [];
   /* eventForm = {
      startDay: '',
      startTime: '',
@@ -75,7 +75,7 @@ export class ScheduleComponent  {
     initialDate: "2023-01-02",
     slotMinTime: '08:00',
     slotMaxTime: '20:00',
-    events: this.events,
+    events: [],
     select: this.handleSelect.bind(this),
     /*events: this.calendarEvent,*/
     /*eventClick: this.handleEventClick.bind(this),*/
@@ -262,16 +262,16 @@ export class ScheduleComponent  {
           this.gs?.getAll(this.groupClass.institution.id).subscribe(c => this.groupClasses = c);
           this.ses?.getAll(Number(id)).subscribe(s => {
             this.scheduleEvent = s;
-            this.calendarOptions.events = this.events;
-            console.log("scheduleEvent : " + this.scheduleEvent)
-            console.log("teachers : " + this.teachers)
+            this.calendarOptions.events = this.scheduleEvent.map(e => e as any);
+            console.log("calendaroption : " + this.calendarOptions.events)
+            console.log("scheduleEvent : " , this.scheduleEvent)
+            console.log("teachers : " , this.teachers)
           });
-          console.log(this.groupClass);
-          console.log(this.scheduleEvent);
+          console.log("Groupe class : " + this.groupClass);
+          console.log("Schedule event : " + this.scheduleEvent);
 
-
-          this.calendarOptions.events = this.events;
-          console.log( this.ses?.getAll(Number(id)).subscribe(ses => this.scheduleEvent = ses))
+          //console.log("This events : " + this.events);
+          //this.calendarOptions.events = this.events;
 
           this.ourForm = this.fb.group({
               date:['', Validators.required],
