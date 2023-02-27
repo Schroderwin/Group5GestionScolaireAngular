@@ -7,11 +7,11 @@
 
   <div class='demo-app-main'>
     <full-calendar *ngIf='calendarVisible' [options]='calendarOptions' (click)="open(content)"  id="calendar">
-      <!--      <ng-template #eventContent let-arg>-->
-      <!--        <b>{{ arg.timeText }}</b>-->
-      <!--        <b>{{ arg.timeText }}</b>-->
-      <!--        <i>{{ arg.event.title }}</i>-->
-      <!--      </ng-template>-->
+
+<!--      <ng-template #eventContent let-arg>-->
+<!--        <b>{{ arg.timeText }}</b>-->
+<!--        <i>{{ arg.event.title }}</i>-->
+<!--      </ng-template>-->
 
 
     </full-calendar>
@@ -24,6 +24,7 @@
 </div>
 
 
+
 <!--Modal-->
 <ng-template #content let-modal>
   <div class="modal-header">
@@ -32,6 +33,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+
   <form  [formGroup]="ourForm" (ngSubmit)="handleSelect($event)" >
     <div class="modal-body">
       <!--formulaire -->
@@ -52,6 +54,7 @@
       <div formGroupName="teacher">
         <label for="teacherId" class="form-label">Professeur :</label>
         <select  id="teacherId" class="form-control" formControlName="id">
+
           <option  *ngFor="let teacher of teachers" [value]=teacher.id >{{teacher.lastName}} {{teacher.firstName}}</option>
         </select>
       </div>
@@ -82,6 +85,14 @@
     <li *ngIf="ourForm.controls['room'].errors?.['required']">La salle de classe est obligatoire</li>
 
   </ul>
+  
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Annuler</button>
+    <button type="button" class="btn btn-primary" (click)="modal.close('Save click')">Sauvegarder</button>
+
+  </div>
+
+</ng-template>
 
   <div>
   <pre>
@@ -90,3 +101,13 @@
     Form status: {{ourForm.valid | json}}
   </div>
 </ng-template>
+
+
+
+
+
+
+
+
+
+gitt

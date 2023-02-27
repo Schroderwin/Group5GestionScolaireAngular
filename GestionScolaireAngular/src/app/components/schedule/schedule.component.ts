@@ -1,5 +1,7 @@
+
 import {Component, ChangeDetectorRef, OnInit, ViewChild, Injectable} from '@angular/core';
 import {CalendarOptions, DateSelectArg, EventClickArg, EventApi, EventInput  } from '@fullcalendar/core';
+
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -8,6 +10,7 @@ import { INITIAL_EVENTS, createEventId } from './event-utils';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
+
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Teacher} from "../../model/teacher.model";
 import {Subject} from "../../model/subject.model";
@@ -74,6 +77,7 @@ export class ScheduleComponent  {
     initialDate: "2023-01-02",
     slotMinTime: '08:00',
     slotMaxTime: '20:00',
+
     events: this.events,
     select: this.handleSelect.bind(this),
     /*events: this.calendarEvent,*/
@@ -84,6 +88,7 @@ export class ScheduleComponent  {
       const modalRef = this.modalService.open(this.content);
       modalRef.componentInstance.event = info.event;
     },
+
 
 
   };
@@ -121,6 +126,7 @@ export class ScheduleComponent  {
 
 
 
+
   handleCalendarToggle() {
     this.calendarVisible = !this.calendarVisible;
   }
@@ -147,6 +153,30 @@ export class ScheduleComponent  {
     //this.endTime = new Date(selectInfo.end).getHours();
     this.endTime = new Date(selectInfo.end).toLocaleTimeString();
 
+
+
+
+  @ViewChild('content') content: any;
+
+  handleDateSelect(selectInfo: DateSelectArg) {
+
+    this.modalService.open(this.content, { centered: true });
+    const startDate = selectInfo.start;
+    this.startDay = new Date(selectInfo.startStr).toLocaleString('fr-FR', { weekday: 'long' });
+   this.startTime = selectInfo.startStr;
+   this.endTime = selectInfo.endStr;
+
+
+
+
+  }
+
+
+
+
+  //handleDateSelect(selectInfo: DateSelectArg) {
+  // const title = prompt('Please enter a new title for your event');
+  
     const calendarApi = selectInfo.view.calendar;
 
     calendarApi.unselect(); // clear date selection
@@ -178,7 +208,16 @@ export class ScheduleComponent  {
 
 
     }
-  }
+    this.modalService.open(this.content,  { windowClass : "myCustomModalClass"});
+    selectInfo.startStr;
+
+
+  }*/
+
+
+
+  //ajouter un êvenment
+
 
 
 
@@ -189,14 +228,19 @@ export class ScheduleComponent  {
     let events: any[] = JSON.parse(localStorage.getItem('events') || '[]');
     events.push(event);
     localStorage.setItem('events', JSON.stringify(events));
+
+  handleEventClick(clickInfo: EventClickArg) {
+    if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
+      clickInfo.event.remove();
+
+    }
+
+
+
   }
 
 
 
-  /* handleEventClick(clickInfo: EventClickArg) {
-
-    /* if (confirm(`Are you sure you want to delete the event '${clickInfo.event.title}'`)) {
-       clickInfo.event.remove();
 
 
      const teacherId = this.ourForm.get('teacher.id')?.value;
@@ -218,9 +262,10 @@ export class ScheduleComponent  {
 
 
 
-  /*handleEvents(events: EventApi[]) {
+  handleEvents(events: EventApi[]) {
     this.currentEvents = events;
     this.changeDetector.detectChanges();
+
 
   }*/
 
@@ -283,8 +328,8 @@ export class ScheduleComponent  {
 
       }
     )
-  }
 
+  }
 
 
 
