@@ -1,4 +1,4 @@
-<h2>Emploi du temps de la classe : {{groupClass.name}}</h2>
+<h2>Emploi du temps de la classe : {{groupClass.name}} (Id : {{groupClass.id}} )</h2>
 <h3>De l'établissement : {{groupClass.institution.name}}</h3>
 
 
@@ -7,11 +7,19 @@
 
   <div class='demo-app-main'>
     <full-calendar *ngIf='calendarVisible' [options]='calendarOptions' (click)="open(content)"  id="calendar">
+<<<<<<< HEAD
       <!--      <ng-template #eventContent let-arg>-->
       <!--        <b>{{ arg.timeText }}</b>-->
       <!--        <b>{{ arg.timeText }}</b>-->
       <!--        <i>{{ arg.event.title }}</i>-->
       <!--      </ng-template>-->
+=======
+
+<!--      <ng-template #eventContent let-arg>-->
+<!--        <b>{{ arg.timeText }}</b>-->
+<!--        <i>{{ arg.event.title }}</i>-->
+<!--      </ng-template>-->
+>>>>>>> branche-de-kevin
 
 
     </full-calendar>
@@ -24,6 +32,10 @@
 </div>
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> branche-de-kevin
 <!--Modal-->
 <ng-template #content let-modal>
   <div class="modal-header">
@@ -32,6 +44,11 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> branche-de-kevin
   <form  [formGroup]="ourForm" (ngSubmit)="handleSelect($event)" >
     <div class="modal-body">
       <!--formulaire -->
@@ -52,6 +69,10 @@
       <div formGroupName="teacher">
         <label for="teacherId" class="form-label">Professeur :</label>
         <select  id="teacherId" class="form-control" formControlName="id">
+<<<<<<< HEAD
+=======
+
+>>>>>>> branche-de-kevin
           <option  *ngFor="let teacher of teachers" [value]=teacher.id >{{teacher.lastName}} {{teacher.firstName}}</option>
         </select>
       </div>
@@ -62,16 +83,19 @@
         </select>
       </div>
 
+<<<<<<< HEAD
 
 
+=======
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Annuler</button>
+        <button type="submit" class="btn btn-primary" (click)="modal.close('Save click')">Sauvegarder</button>
+      </div>
+>>>>>>> branche-de-kevin
 
     </div>
 
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Annuler</button>
-      <button type="submit" class="btn btn-primary" >Sauvegarder</button>
 
-    </div>
   </form>
   <ul *ngIf="formsubmitted">
     <li *ngIf="ourForm.controls['startDay'].errors?.['required']">Le jour est obligatoire</li>
@@ -83,6 +107,9 @@
 
   </ul>
 
+
+
+
   <div>
   <pre>
       {{ourForm.value | json}}
@@ -90,3 +117,13 @@
     Form status: {{ourForm.valid | json}}
   </div>
 </ng-template>
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+>>>>>>> branche-de-kevin
