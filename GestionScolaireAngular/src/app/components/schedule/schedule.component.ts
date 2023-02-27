@@ -22,6 +22,7 @@ import {ScheduleEvent} from "../../model/scheduleevent.model";
 import {Time} from "@angular/common";
 import {GroupClass} from "../../model/groupclass.model";
 import {GroupClassService} from "../../services/groupclass.service";
+import {cs} from "@fullcalendar/core/internal-common";
 
 
 
@@ -247,42 +248,48 @@ export class ScheduleComponent  {
    }*/
 
   ngOnInit(): void {
-    const id=this.activatedRoute.snapshot.paramMap.get('id') || '';
+    console.log("Hello");
+    const id=this.activatedRoute.snapshot.paramMap?.get('id') || '';
+    console.log(Number(id));
     if (id){
-      this.gs.getOne(Number(id)).subscribe(c => this.groupClass = c);
-      if(this.groupClass.id){
-        this.ts?.getAll(this.groupClass.institution.id).subscribe(t => this.teachers = t);
-        this.ss?.getAll(this.groupClass.institution.id).subscribe(s => this.subjects = s);
-        this.cs?.getAll(this.groupClass.institution.id).subscribe(c => this.classrooms = c);
-        this.gs?.getAll(this.groupClass.institution.id).subscribe(c => this.groupClasses = c);
-        this.ses?.getAll(Number(id)).subscribe(s => {
-          this.scheduleEvent = s;
-          this.calendarOptions.events = this.events;
+      console.log(id)
+      this.gs.getOne(Number(id)).subscribe(
+        response => {
+          this.groupClass = response;
+          this.ts?.getAll(this.groupClass.institution.id).subscribe(t => this.teachers = t);
+          this.ss?.getAll(this.groupClass.institution.id).subscribe(s => this.subjects = s);
+          this.cs?.getAll(this.groupClass.institution.id).subscribe(c => this.classrooms = c);
+          this.gs?.getAll(this.groupClass.institution.id).subscribe(c => this.groupClasses = c);
+          this.ses?.getAll(Number(id)).subscribe(s => {
+            this.scheduleEvent = s;
+            this.calendarOptions.events = this.events;
+            console.log("scheduleEvent : " + this.scheduleEvent)
+            console.log("teachers : " + this.teachers)
+          });
+          console.log(this.groupClass);
           console.log(this.scheduleEvent);
-        });
-      }
-    }
 
 
+          this.calendarOptions.events = this.events;
+          console.log( this.ses?.getAll(Number(id)).subscribe(ses => this.scheduleEvent = ses))
 
-    this.calendarOptions.events = this.events;
-    console.log( this.ses?.getAll(Number(id)).subscribe(ses => this.scheduleEvent = ses))
+          this.ourForm = this.fb.group({
+              date:['', Validators.required],
+              beginTime: ['', Validators.required],
+              endTime: ['', Validators.required],
 
-    this.ourForm = this.fb.group({
-        date:['', Validators.required],
-        beginTime: ['', Validators.required],
-        endTime: ['', Validators.required],
+              teacher: this.fb.group({
+                id: '',
 
-        teacher: this.fb.group({
-          id: '',
+              }),
+              subject: this.fb.group({
+                id: ''
+              })
 
-        }),
-        subject: this.fb.group({
-          id: ''
-        })
+            }
+          )
+    })}
 
-      }
-    )
   }
 
 
