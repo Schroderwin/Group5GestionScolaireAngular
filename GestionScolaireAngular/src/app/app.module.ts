@@ -35,7 +35,7 @@ const routes : Routes = [
   {path: 'institution/:id/classroom', component: ClassroomListComponent},
   {path: 'classroom/:id', component: ClassroomDetailComponent},
   {path: 'institution/:id/group-class', component: GroupclassListComponent},
-  {path: 'institution/:id/group-class/:id/schedule', component: ScheduleComponent},
+  {path: 'group-class/:id/schedule', component: ScheduleComponent},
   {path: 'group-class/:id', component: GroupclassDetailComponent},
   {path: 'institution/:id/subject', component: SubjectListComponent},
   {path: 'subject/:id', component: SubjectDetailComponent},
