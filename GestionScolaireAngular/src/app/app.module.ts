@@ -63,7 +63,7 @@ const routes : Routes = [
     TeacherComponent,
     TeacherListComponent,
     TeacherDetailComponent,
-    ScheduleComponent
+    ScheduleComponent,
   ],
   imports: [
     BrowserModule,
