@@ -39,7 +39,8 @@ export class InstitutionDetailComponent {
 
   ngOnInit(): void {
     console.log("Je suis dans le init")
-    const id=this.activatedRoute.snapshot.paramMap.get('id') || '';
+    // const id=this.activatedRoute.snapshot.paramMap.get('id') || '';
+    const id=this.activatedRoute.snapshot.paramMap.get('id');
     if (id) {
       this.is.getOne(Number(id)).subscribe(p => this.institution = p)
       this.teacherServ.getAll(Number(id)).subscribe(t=>this.teachers = t)

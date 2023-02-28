@@ -1,3 +1,6 @@
+
+<div *ngIf="groupClass">
+
 <span [routerLink]="['/group-class', groupClass.id]">
 <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
   <div class="card-header">{{groupClass.name}}</div>
@@ -6,3 +9,4 @@
   </div>
 </div>
 </span>
+</div>

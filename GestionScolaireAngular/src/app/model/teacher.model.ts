@@ -10,8 +10,8 @@ export interface Teacher {
   birthDate: Date,
   subjects: Subject[]
 
-  groupClass: GroupClass;
-  scheduleEvents: ScheduleEvent[];
+  groupClass: GroupClass,
+  scheduleEvents: ScheduleEvent[],
 
-  institution: Institution;
+  institution: Institution
 }
