@@ -8,7 +8,7 @@ import {Subject} from "../model/subject.model";
 })
 export class SubjectService {
 
-  url = 'http://localhost:8083/gestionscolaire';
+  url = 'http://localhost:8082/gestionscolaire';
 
   constructor(private http: HttpClient) {
   }

@@ -16,6 +16,7 @@ import {ClassroomService} from "../../services/classroom.service";
 import {ScheduleService} from "../../services/schedule.service";
 import {GroupClass} from "../../model/groupclass.model";
 import {GroupClassService} from "../../services/groupclass.service";
+import {cs} from "@fullcalendar/core/internal-common";
 
 
 @Component({
@@ -24,9 +25,11 @@ import {GroupClassService} from "../../services/groupclass.service";
   styleUrls: ['./schedule.component.css'],
   providers: [NgbModalConfig, NgbModal],
 })
+
 export class ScheduleComponent {
   events: EventInput[] = [];
 
+  // @ts-ignore
   calendarOptions: CalendarOptions = {
     plugins: [
       interactionPlugin,
@@ -72,7 +75,6 @@ export class ScheduleComponent {
   groupClass!: GroupClass;
   id!: string;
   startStr!: string;
-
 
   constructor(private changeDetector: ChangeDetectorRef, config: NgbModalConfig, private router: Router,
               private modalService: NgbModal, private ts: TeacherService, private activatedRoute: ActivatedRoute,
@@ -125,7 +127,6 @@ export class ScheduleComponent {
 
 
   handleSelect(selectInfo: DateSelectArg) {
-
     this.date = new Date(selectInfo.startStr).toISOString().split('T')[0]
     this.startStr = new Date(selectInfo.startStr).toLocaleString('fr-FR', { weekday: 'long' })
     this.beginTime = new Date(selectInfo.start).toLocaleTimeString();
@@ -167,9 +168,7 @@ export class ScheduleComponent {
         }
       );
     }
-
   }
-
 
 // generer le PDF en utilisant jsPDF et html2canvas pour la capture d'écran
   generatePdf() {

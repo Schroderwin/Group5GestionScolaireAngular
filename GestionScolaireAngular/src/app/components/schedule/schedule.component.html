@@ -1,10 +1,9 @@
+
 <h2 *ngIf="groupClass">Emploi du temps de la classe : {{groupClass.name}}</h2>
 <h3 *ngIf="groupClass">De l'établissement : {{groupClass.institution.name}}</h3>
 
 
 <div class='demo-app'>
-
-
   <div class='demo-app-main'>
     <full-calendar  [options]='calendarOptions'id="calendar">
 
@@ -12,6 +11,7 @@
 
         <i>{{ arg.event.title }}</i>
       </ng-template>
+
 
     </full-calendar>
     <div>
@@ -53,6 +53,7 @@
           <option *ngFor="let sub of subjects" [value]=sub.id>{{sub.name}}</option>
         </select>
       </div>
+
 
       <div formGroupName="classroom">
         <label for="classroomId" class="form-label">Salle de classe :</label>

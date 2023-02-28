@@ -1,3 +1,17 @@
+
+<span [routerLink]="['/institution/' , institution.id]" class="d-flex justify-content-center">
+
+  <div class="card text-dark bg-light mb-3" style="max-width: 24rem;">
+    <div class="card-header">{{institution.name}}</div>
+    <div class="card-body">
+      <h5 class="severity text-secondary">Type d'établissement : {{institution.type}}</h5>
+      <h5 class="Type text-secondary">Téléphone : {{institution.phone}}</h5>
+    </div>
+  </div>
+</span>
+
+
+<!--
 <span [routerLink]="['/institution/' , institution.id]">
 <div class="card text-white bg-primary mb-3" style="max-width: 24rem;">
   <div class="card-header">{{institution.name}}</div>
@@ -7,3 +21,4 @@
   </div>
 </div>
 </span>
+-->
